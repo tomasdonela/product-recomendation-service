@@ -1,0 +1,111 @@
+[
+  {
+    "name": "Current Account",
+    "conditions": [
+      {
+        "subject": "INCOME",
+        "operator": "IS_MORE_THEN",
+        "argument": "0"
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  },
+  {
+    "name": "Current Account Plus",
+    "conditions": [
+      {
+        "subject": "INCOME",
+        "operator": "IS_MORE_THEN",
+        "argument": "40000"
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  },
+  {
+    "name": "Junior Saver Account",
+    "conditions": [
+      {
+        "subject": "AGE",
+        "operator": "IS_LESS_THEN",
+        "argument": "18"
+      }
+    ]
+  },
+  {
+    "name": "Student Account",
+    "conditions": [
+      {
+        "subject": "STUDENT",
+        "argument": true
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  },
+  {
+    "name": "Senior Account",
+    "conditions": [
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "65"
+      }
+    ]
+  },
+  {
+    "name": "Debit Card",
+    "conditions": [
+      {
+        "subject": "INCOME",
+        "operator": "IS_LESS_THEN",
+        "argument": "12001"
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  },
+  {
+    "name": "Credit Card",
+    "conditions": [
+      {
+        "subject": "INCOME",
+        "operator": "IS_MORE_THEN",
+        "argument": "12000"
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  },
+  {
+    "name": "Gold Credit Card",
+    "conditions": [
+      {
+        "subject": "INCOME",
+        "operator": "IS_MORE_THEN",
+        "argument": "40000"
+      },
+      {
+        "subject": "AGE",
+        "operator": "IS_MORE_THEN",
+        "argument": "17"
+      }
+    ]
+  }
+]
