@@ -1,0 +1,47 @@
+[
+  {
+    "type":  "RANGE",
+    "question": "What is your age range ?",
+    "subject": "AGE",
+    "answerOptions": [
+      {
+        "rangeStart": "0",
+        "rangeEnd": "17"
+      },
+      {
+        "rangeStart": "18",
+        "rangeEnd": "64"
+      },
+      {
+        "rangeStart": "65"
+      }
+    ]
+  },
+  {
+    "type":  "YES_NO",
+    "question": "Is your status student ?",
+    "subject": "STUDENT"
+  },
+  {
+    "type":  "RANGE",
+    "question": "What is your income range?",
+    "subject": "INCOME",
+    "answerOptions": [
+      {
+        "rangeStart": "0",
+        "rangeEnd": "0"
+      },
+      {
+        "rangeStart": "1",
+        "rangeEnd": "12000"
+      },
+      {
+        "rangeStart": "12001",
+        "rangeEnd": "40000"
+      },
+      {
+        "rangeStart": "40001"
+      }
+    ]
+  }
+]

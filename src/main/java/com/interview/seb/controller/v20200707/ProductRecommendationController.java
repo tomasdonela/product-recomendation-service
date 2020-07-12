@@ -1,14 +1,16 @@
 package com.interview.seb.controller.v20200707;
 
-import com.interview.seb.controller.v20200707.entity.ExternalCustomerDescriptor;
+import com.interview.seb.controller.v20200707.entity.ExternalCustomerAnswers;
 import com.interview.seb.controller.v20200707.entity.ExternalProductCollection;
+import com.interview.seb.controller.v20200707.entity.ExternalQuestion;
 import com.interview.seb.service.ProductRecommendationService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("v20200707/product-recomendation")
+@RequestMapping("v20200707/product-recommendation")
 public class ProductRecommendationController {
 
     private final ProductRecommendationService productRecommendationService;
@@ -20,8 +22,16 @@ public class ProductRecommendationController {
     }
 
     @PostMapping
-    public ExternalProductCollection getProducts(ExternalCustomerDescriptor customerDescriptor){
+    public ExternalProductCollection getProducts(@RequestBody ExternalCustomerAnswers customerAnswers){
         return ExternalProductCollection.valueOf(
-                productRecommendationService.calculateRecommendation(customerDescriptor.toInternal()));
+                productRecommendationService.calculateRecommendation(customerAnswers.toInternal()));
+    }
+
+    @GetMapping("/questions")
+    public List<ExternalQuestion> getQuestions(){
+        return productRecommendationService.getQuestions()
+                .stream()
+                .map(ExternalQuestion::valueOf)
+                .collect(Collectors.toList());
     }
 }

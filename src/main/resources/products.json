@@ -44,7 +44,8 @@
     "conditions": [
       {
         "subject": "STUDENT",
-        "argument": true
+        "operator": "IS_EQUAL",
+        "argument": "YES"
       },
       {
         "subject": "AGE",

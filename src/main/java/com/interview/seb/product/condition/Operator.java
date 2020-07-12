@@ -1,20 +1,22 @@
 package com.interview.seb.product.condition;
 
-import com.interview.seb.entity.RangeItem;
+import com.interview.seb.question.AnswerOption;
+import com.interview.seb.question.RangeOption;
 import java.util.function.BiPredicate;
 
 public enum Operator {
-    IS_MORE_THEN((subject, argument) -> subject.getOperations().isMoreThen(argument)),
-    IS_MORE_EQUAL_THEN((subject, argument) -> subject.getOperations().isMoreEqualThen(argument)),
-    IS_LESS_THEN((subject, argument) -> subject.getOperations().isLessThen(argument));
+    IS_MORE_THEN(AnswerOption::isMoreThen),
+    IS_MORE_EQUAL_THEN(AnswerOption::isMoreEqualThen),
+    IS_LESS_THEN(AnswerOption::isLessThen),
+    IS_EQUAL(AnswerOption::isEqual);
 
-    private final BiPredicate<RangeItem, Integer> predicate;
+    private final BiPredicate<AnswerOption, String> predicate;
 
-    Operator(BiPredicate<RangeItem, Integer> predicate) {
+    Operator(BiPredicate<AnswerOption, String> predicate) {
         this.predicate = predicate;
     }
 
-    public boolean execute(RangeItem subject, Integer argument){
-        return predicate.test(subject, argument);
+    public boolean execute(AnswerOption answer, String argument){
+        return predicate.test(answer, argument);
     }
 }

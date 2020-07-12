@@ -2,3 +2,5 @@ app:
   datasource:
     product:
       file-name: "products.json"
+    question:
+      file-name: "questions.json"
