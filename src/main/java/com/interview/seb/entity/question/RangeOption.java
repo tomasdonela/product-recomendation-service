@@ -1,4 +1,4 @@
-package com.interview.seb.question;
+package com.interview.seb.entity.question;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,10 +18,10 @@ public class RangeOption implements AnswerOption{
 
     private static String createName(int rangeStart, Integer rangeEnd){
         String rangeName = String.valueOf(rangeStart);
-        if(rangeEnd != null){
-            rangeName = rangeName + " - " + rangeEnd;
-        } else {
-            rangeName = rangeName + " + ";
+        if(rangeEnd == null){
+            rangeName = rangeName + "+";
+        } else if (rangeStart != rangeEnd) {
+            rangeName = rangeName + "-" + rangeEnd;
         }
         return rangeName;
     }
@@ -47,6 +47,6 @@ public class RangeOption implements AnswerOption{
 
     @Override
     public boolean isLessThen(String argument) {
-        return this.rangeEnd == null || this.rangeEnd < Integer.parseInt(argument);
+        return this.rangeEnd != null && this.rangeEnd < Integer.parseInt(argument);
     }
 }

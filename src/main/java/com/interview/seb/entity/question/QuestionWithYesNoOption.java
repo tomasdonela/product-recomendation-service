@@ -1,11 +1,10 @@
-package com.interview.seb.question;
+package com.interview.seb.entity.question;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class QuestionWithYesNoOption implements Question{
     private final String subject;
@@ -36,10 +35,12 @@ public class QuestionWithYesNoOption implements Question{
     }
 
     @Override
-    public Optional<AnswerOption> getAnswerOption(String answerName) {
-        return answerOptions
+    public AnswerOption getAnswerOption(String customerAnswer) {
+        return this.answerOptions
                 .stream()
-                .filter(option -> option.getName().equals(answerName))
-                .findFirst();
+                .filter(option -> option.getName().equals(customerAnswer))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(
+                        String.format("Option %s could not be found for subject %s.", customerAnswer, this.subject)));
     }
 }

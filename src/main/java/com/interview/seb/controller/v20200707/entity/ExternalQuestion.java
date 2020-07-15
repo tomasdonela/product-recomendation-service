@@ -1,7 +1,7 @@
 package com.interview.seb.controller.v20200707.entity;
 
-import com.interview.seb.question.AnswerOption;
-import com.interview.seb.question.Question;
+import com.interview.seb.entity.question.AnswerOption;
+import com.interview.seb.entity.question.Question;
 import io.swagger.annotations.ApiModel;
 
 import java.util.List;

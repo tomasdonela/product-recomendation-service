@@ -1,21 +1,23 @@
 package com.interview.seb.service;
 
-import com.interview.seb.product.Product;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
-import com.interview.seb.question.AnswerOption;
-import com.interview.seb.question.Question;
+import com.interview.seb.entity.product.Product;
+import com.interview.seb.entity.question.AnswerOption;
+import com.interview.seb.entity.question.Question;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductRecommendationService {
 
-    private final ProductRepository productRepository;
-    private final QuestionRepository questionRepository;
+    private final FileRepository<Product> productRepository;
+    private final FileRepository<Question> questionRepository;
 
-    public ProductRecommendationService(ProductRepository productRepository, QuestionRepository questionRepository) {
+    public ProductRecommendationService(
+            FileRepository<Product> productRepository, FileRepository<Question> questionRepository) {
         this.productRepository = productRepository;
         this.questionRepository = questionRepository;
     }
@@ -25,13 +27,16 @@ public class ProductRecommendationService {
                 .stream()
                 .collect(Collectors.toMap(
                         Question::getSubject,
-                        question -> question.getAnswerOption(customerAnswers.get(question.getSubject()))))                ;
+                        question -> Optional
+                                .ofNullable(customerAnswers.get(question.getSubject()))
+                                .map(question::getAnswerOption)
+                        ));
 
         return productRepository.findAll()
-                .parallelStream()
-                .filter(product -> product.getConditions()
-                        .parallelStream()
-                        .allMatch(condition -> condition.isMatching(answers)))
+                .stream()
+                .filter(product -> product.getCriteria()
+                        .stream()
+                        .allMatch(criteria -> criteria.isMatching(answers)))
                 .collect(Collectors.toList());
     }
 

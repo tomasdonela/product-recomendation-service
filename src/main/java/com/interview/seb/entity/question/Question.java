@@ -1,10 +1,9 @@
-package com.interview.seb.question;
+package com.interview.seb.entity.question;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import java.util.List;
-import java.util.Optional;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME , property = "type")
 @JsonSubTypes({
@@ -15,5 +14,5 @@ public interface Question {
     String getSubject();
     String getQuestion();
     List<AnswerOption> getAnswerOptions();
-    Optional<AnswerOption> getAnswerOption(String answerName);
+    AnswerOption getAnswerOption(String customerAnswer);
 }

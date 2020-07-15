@@ -22,7 +22,7 @@ public class ProductRecommendationController {
     }
 
     @PostMapping
-    public ExternalProductCollection getProducts(@RequestBody ExternalCustomerAnswers customerAnswers){
+    public ExternalProductCollection getRecommendedProducts(@RequestBody ExternalCustomerAnswers customerAnswers){
         return ExternalProductCollection.valueOf(
                 productRecommendationService.calculateRecommendation(customerAnswers.toInternal()));
     }

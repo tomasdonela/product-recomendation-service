@@ -1,7 +1,7 @@
-package com.interview.seb.product.condition;
+package com.interview.seb.entity.product.criteria;
 
-import com.interview.seb.question.AnswerOption;
-import com.interview.seb.question.RangeOption;
+import com.interview.seb.entity.question.AnswerOption;
+
 import java.util.function.BiPredicate;
 
 public enum Operator {

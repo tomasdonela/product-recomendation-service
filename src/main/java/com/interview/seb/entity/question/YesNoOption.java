@@ -1,4 +1,4 @@
-package com.interview.seb.question;
+package com.interview.seb.entity.question;
 
 public enum YesNoOption implements AnswerOption{
     YES("Yes"), NO("No");

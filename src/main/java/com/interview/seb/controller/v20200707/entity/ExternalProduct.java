@@ -1,6 +1,6 @@
 package com.interview.seb.controller.v20200707.entity;
 
-import com.interview.seb.product.Product;
+import com.interview.seb.entity.product.Product;
 import io.swagger.annotations.ApiModel;
 
 @ApiModel("v20200707.ExternalProduct")
